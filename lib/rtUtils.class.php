@@ -278,6 +278,9 @@ class rtUtils
 function UseHelper()
 {
 	$args = func_get_args();
+	
+	rtAutoloader::addPath(rtConfig::get('rt_app_helpers_dir'), RT_CORE_DIR . DS . 'helper');
+	
 	foreach ($args as $arg)
 	{
 		require_once 'helper' . DS . $arg . 'Helper.php';

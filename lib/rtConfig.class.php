@@ -4,9 +4,14 @@ class rtConfig
 {
 	private static $_data = array();
 	
+	public static function getAll()
+	{
+		return self::$_data;
+	}
+	
 	public static function init($data)
 	{
-		self::$_data = $data;
+		self::$_data = array_merge(self::$_data, $data);
 	}
 	
 	/**

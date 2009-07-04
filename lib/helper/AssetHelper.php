@@ -12,7 +12,7 @@ function include_javascripts()
 	// we may have new javascripts
 	if(($new = func_get_args()))
 	{
-		mfResponse::getInstance()->addJavascript($new);
+		rtResponse::getInstance()->addJavascript($new);
 	}
 	
 	$files = rtResponse::getInstance()->getJavascripts();
@@ -33,7 +33,7 @@ function include_stylesheets()
 	// we may have new stylesheet
 	if(($new = func_get_args()))
 	{
-		mfResponse::getInstance()->addStylesheet($new);
+		rtResponse::getInstance()->addStylesheet($new);
 	}
 	
 	$files = rtResponse::getInstance()->getStylesheets();

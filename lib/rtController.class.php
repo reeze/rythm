@@ -21,9 +21,10 @@
         if (substr($action, 0, 1) == '_' || ! method_exists($this, $action)) {
             throw new Exception("Action '{$action}' doesn't exist in " . get_class($this));
         }
-        $this->_layout_ = rtConfig::get('default_layout');
-        if($this->getRequest()->isAjax()) $this->_layout_ = false;
+        $this->_layout_ = 'layout'; // default layout
         
+        // ajax request have no layout
+        if($this->getRequest()->isAjax()) $this->_layout_ = false;        
         
         
         //==============Template default set==============================
@@ -32,9 +33,9 @@
         $format = $this->getRequestParameter('format', 'html');
         
         // Template & Layout dir
-        $template_dir = APP_DIR . DS . 'views' . DS . $controller_name;
+        $template_dir = rtConfig::get('rt_app_views_dir') . DS . $controller_name;
         $template = $action_name;
-        $layout_dir = APP_DIR . DS . 'views' . DS . 'layout';
+        $layout_dir = rtConfig::get('rt_app_views_layout_dir');
         
         $view_class = rtResponse::getInstance()->getViewClass();
         // formated template
@@ -48,7 +49,7 @@
         $this->setLayoutDir($layout_dir);        
         
         // the name as helpers will load automaticly
-        $helper_file = APP_DIR . DS . 'helpers' . DS . $this->getRequest()->getController() . 'Helper.php';
+        $helper_file = rtConfig::get('rt_app_helpers_dir') . DS . $this->getRequest()->getController() . 'Helper.php';
         if(file_exists($helper_file))
         {
         	require_once $helper_file;

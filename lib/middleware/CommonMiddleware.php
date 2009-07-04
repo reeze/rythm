@@ -13,7 +13,7 @@ class CommonMiddleware
 		// handle Flash system should initialized before any others
 		// so we clean here
 		// TODO do we need ajax request check before clean flash?
-		mfFlash::getInstance()->clean();
+		rtFlash::getInstance()->clean();
 		
 		return $request;
 	}

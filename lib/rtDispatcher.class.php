@@ -5,8 +5,24 @@
  **/
 class rtDispatcher
 {
-    public static function dispatch()
+    public static function dispatch(rtAppConfig $config)
     {
+    	// Load the project's config
+    	    	
+    	
+    	Rythm::init();
+    	
+    	// Load the application's config
+    	
+    	
+    	
+    	// Route the request
+    	rtRoute::route();
+    	
+    	//============================================================
+    	// Start Handle the request
+    	//============================================================
+    	
     	// Initial middleware classes
     	$middleware_classes = rtConfig::get('middlewares', array());
     	
@@ -18,7 +34,7 @@ class rtDispatcher
     	}
     	    	
     	// ===========================================
-    	// start process request
+    	// middleware start process request
     	$request = rtRequest::getInstance();
     	foreach($middlewares as $middleware)
     	{
@@ -27,7 +43,7 @@ class rtDispatcher
     			$middleware->process_request($request);
     		}
     	}
-    	// end process request
+    	// middleware end process request
     	
     	// ===========================================
     	// Core Process

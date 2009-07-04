@@ -5,13 +5,13 @@ class ToolBarMiddleware
 	public function process_request()
 	{
 		// add jquery files
-		mfResponse::getInstance()->addJavascript('jquery', 'mf_toolbar');
-		mfResponse::getInstance()->addStylesheet('mf_toolbar');	
+		rtResponse::getInstance()->addJavascript('jquery', 'rt_toolbar');
+		rtResponse::getInstance()->addStylesheet('rt_toolbar');	
 	}
 	
 	public function process_response()
 	{
-		if(!mfConfig::get('enable_toolbar', false)) return ;
+		if(!rtConfig::get('enable_toolbar', false)) return ;
 		
 		$params = array(
 			'logs' => rtLogger::getLogs()
@@ -19,7 +19,7 @@ class ToolBarMiddleware
 		
 		$params = array_merge($params, rtController::getMagicViewVars());
 		
-		list($tpl, $view_class) = findTemplateFileName(MF_CORE_DIR . DS . 'default' . DS . 'toolbar');
+		list($tpl, $view_class) = findTemplateFileName(rtConfig::get('rt_core_dir') . DS . 'default' . DS . 'toolbar');
 		
 		$toolbar = new $view_class($tpl, $params);
 		

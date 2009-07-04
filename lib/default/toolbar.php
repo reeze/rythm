@@ -1,7 +1,7 @@
 <!-- Debug Tool Bar Middleware -->
 
 <style>
-	#mf_toolbar {
+	#rt_toolbar {
 		padding: 10px;
 		border: 1px solid #ddd;
 		position: absolute;
@@ -9,25 +9,25 @@
 		right: 200px;
 		background-color: #fff;
 	}
-	#mf_logs {
+	#rt_logs {
 	}
 	
 </style>
 
 
-<div id="mf_toolbar">
-	<div id="mf_toolbar_banner">
-		<a id="mf_toolbar_switcher" href="#" >Show</a>
+<div id="rt_toolbar">
+	<div id="rt_toolbar_banner">
+		<a id="rt_toolbar_switcher" href="#" >Show</a>
 	</div>
 	
-	<div id="mf_logs" style="display:none">
+	<div id="rt_logs" style="display:none">
 		<pre>
 		<?php foreach ($logs as $log) {
 			echo $log['message'] . "<br />";
 		}
 		
-		var_dump($mf_flash);
-		var_dump($mf_request);
+		var_dump($rt_flash);
+		var_dump($rt_request);
 		?>
 		</pre>
 	</div>

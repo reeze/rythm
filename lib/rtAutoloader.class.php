@@ -1,37 +1,52 @@
 <?php
 
+
+# require the core rythm
+require_once 'Rythm.class.php';
+
 /**
  * rtAutoloader
  *
  */
-class rtAutoLoader
+class rtAutoloader
 {
+	public static function register()
+	{
+		self::initPath();
+		
+    // register autoload function
+    spl_autoload_register('rtAutoloader::basic_autoloader');
+    
+    rtConfig::set('rt_core_dir', dirname(__FILE__));
+    
+          
+    
+	}
 	
 	public static function initPath()
 	{
-		// basic include paths
-			
-		self::addPath(APP_DIR,
-					  ROOT_DIR . DS . 'lib',
+		// basic include paths		
+		
+		
+		$rt_core_dir = dirname(__FILE__);
+		
+		self::addPath(
 					  // TODO plugin paths
-					  rt_CORE_DIR . DS . 'vendor',
-					  rt_CORE_DIR);
+					  $rt_core_dir . DIRECTORY_SEPARATOR . 'vendor',
+					  $rt_core_dir);
 					  
-		// register autoload function
-		spl_autoload_register('rtAutoLoader::basic_autoloader');
 	}
 	
 	public static function basic_autoloader($class_name)
 	{
-		$paths = explode(PS, get_include_path());
-		$found = false;
+		$paths = explode(PATH_SEPARATOR, get_include_path());
 		
 		// manually find include files here. just because if the included file
 		// doesn't exist will throw warning...
 		
 		foreach ($paths as $path)
 		{
-			$file = $path . DS . "$class_name.php";
+			$file = $path . DIRECTORY_SEPARATOR . "$class_name.php";
 			
 			if(file_exists($file))
 			{
@@ -42,7 +57,7 @@ class rtAutoLoader
 		foreach ($paths as $path)
 		{
 			
-			$cls_file = $path . DS . "$class_name.class.php";
+			$cls_file = $path . DIRECTORY_SEPARATOR . "$class_name.class.php";
 			if(file_exists($cls_file))
 			{
 				require_once $cls_file;
@@ -73,6 +88,6 @@ class rtAutoLoader
 	{
 		$paths = func_get_args();
 		
-		set_include_path(implode(PS, $paths) . PS . get_include_path());
+		set_include_path(implode(PATH_SEPARATOR, $paths) . PATH_SEPARATOR . get_include_path());
 	}
 }

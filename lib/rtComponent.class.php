@@ -17,7 +17,7 @@ class rtComponent
         call_user_func(array($this, $real_func));
         
         // render view
-        $this->_template_ = APP_DIR . DS . 'views' . DS . 'components' . DS . $component . DS . "_$func";
+        $this->_template_ = rtConfig::get('rt_app_views_dir') . DS . 'components' . DS . $component . DS . "_$func";
         list($file, $view_class) = findTemplateFileName($this->_template_);
         
         // merge the use defined vars

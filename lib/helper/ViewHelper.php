@@ -32,11 +32,11 @@ function include_partial($partial, $params=array())
 	// specify certain controller to render
 	if($path)
 	{
-		$view_path = VIEWS_DIR . DS . $path;
+		$view_path = rtConfig::get('rt_app_views_dir') . DS . $path;
 	}
 	else 
 	{
-		$view_path = VIEWS_DIR . DS . $request->getController();
+		$view_path = rtConfig::get('rt_app_views_dir') . DS . $request->getController();
 	}
 		
 	list($view_tpl, $view_class) = findTemplateFileName($view_path . DS . $partial);
@@ -77,25 +77,25 @@ function slot($name, $value=NULL)
 	// direct slot
 	if($value)
 	{
-		mfResponse::getInstance()->setSlot($name, $value);
+		rtResponse::getInstance()->setSlot($name, $value);
 	}
 	else
 	{
 		ob_start(); // start output buffer
-		mfConfig::set('mf.response.view.slots', $name);
+		rtConfig::set('rt.response.view.slots', $name);
 	}
 }
 
 function end_slot()
 {
-	$slot_name = rtConfig::get('mf.response.view.slots');
+	$slot_name = rtConfig::get('rt.response.view.slots');
 	if(!$slot_name) throw new rtException("end_slot() should follow with a slot() function");
 	
 	$response = rtResponse::getInstance();
 	$content = ob_get_clean();
 	$response->setSlot($slot_name, $content);
 	// empty it
-	mfConfig::set('mf.response.view.slots', NULL);
+	rtConfig::set('rt.response.view.slots', NULL);
 }
 
 
