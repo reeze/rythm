@@ -1,0 +1,8 @@
+--- 
+doc: 
+  squashed: true
+  url: git@github.com:reeze/rythm-doc.git
+  type: git
+  revision: 6e831f6354a5d358c4b77a06ec53536a854463ad
+  branch: master
+  remote: braid/doc

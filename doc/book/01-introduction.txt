@@ -1,0 +1,14 @@
+# Introduction to MF PHP #
+
+## What is MF-PHP ##
+MF-PHP is a PHP framework, which learned a lot from: [Symfony][1] [Rails][2] and [Django][3]
+
+A lot of the methodoligy can be found in them, so if you know those frameworks, you will feel
+confort with MF-PHP :)
+
+
+
+
+[1]: http://www.symfony-project.org "Symfony"
+[2]: http://www.rubyonrails.org "Rails"
+[3]: http://www.djangoproject.org "Django"

@@ -1,0 +1,12 @@
+._*
+.DS_Store
+.project
+.settings/*
+*.swp
+.cache/*
+_test*
+
+sample/config/database.yml
+
+sample/app/models/generated/*
+sample/data/sql/*
