@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>MF:Micro PHP Framework</title>
+	<title>Rythm PHP Framework</title>
 	<style type="text/css">
 	body#error500 {
 		font-size: 12px;
@@ -37,9 +37,9 @@
 <body id="error500">
 	<div id="wrapper">
 		<div id="header">
-			<h1>MF: The Micro PHP Framework</h1>
+			<h1>Rythm PHP Framework</h1>
 		</div>
-		<div id="content"><?php echo $mf_layout_content; ?></content>
+		<div id="content"><?php echo $rt_layout_content; ?></content>
 	</div>
 </body>
 </html>

@@ -82,7 +82,7 @@ function slot($name, $value=NULL)
 	else
 	{
 		ob_start(); // start output buffer
-		rtConfig::set('rt.response.view.slots', $name);
+		rtConfig::set('rt.response.view.current_slot', $name);
 	}
 }
 
@@ -95,7 +95,7 @@ function end_slot()
 	$content = ob_get_clean();
 	$response->setSlot($slot_name, $content);
 	// empty it
-	rtConfig::set('rt.response.view.slots', NULL);
+	rtConfig::set('rt.response.view.current_slot', NULL);
 }
 
 

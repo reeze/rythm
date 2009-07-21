@@ -139,7 +139,7 @@ function exception_handler(Exception $e)
   try
   {
     list($file, $view_class) = findTemplateFileName(RT_CORE_DIR . DS . 'default' . DS . 'layout');
-    $view = new $view_class($file, array('mf_layout_content' => $content));
+    $view = new $view_class($file, array('rt_layout_content' => $content));
     $view->display();
   }
   catch (Exception $e_in)

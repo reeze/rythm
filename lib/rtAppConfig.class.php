@@ -19,7 +19,7 @@ class rtAppConfig
 		rtConfig::set('rt_app_dir', rtConfig::get('rt_apps_dir') . DS . $app_name);
 		rtConfig::set('rt_app_config_dir', rtConfig::get('rt_app_dir') . DIRECTORY_SEPARATOR . 'config');
 		rtConfig::set('rt_app_controllers_dir', rtConfig::get('rt_app_dir') . DS . 'controllers');
-		rtConfig::set('rt_app_components_dir', rtConfig::get('rt_app_dir') . DS . 'components');
+		rtConfig::set('rt_app_components_dir', rtConfig::get('rt_app_controllers_dir') . DS . 'components');
 		rtConfig::set('rt_app_views_dir', rtConfig::get('rt_app_dir') . DS . 'views');
 		rtConfig::set('rt_app_views_layout_dir', rtConfig::get('rt_app_views_dir') . DS . 'layout');
 		rtConfig::set('rt_models_dir', rtConfig::get('rt_project_dir') . DS . 'lib' . DS . 'models');
