@@ -81,9 +81,10 @@ class Rythm
   	$routes = array();
   	foreach ($array as $name => $route)
   	{
-  		$routes[] = array($name, $route['url'], $route['params']);
+  		$params = isset($route['params']) ? $route['params'] : NULL;
+  		$routes[] = array($name, $route['url'], $params);
   		// formated route
-  		$routes[] = array("{$name}_formatted", $route['url'] . '.:format', $route['params']);
+  		$routes[] = array("{$name}_formatted", $route['url'] . '.:format', $params);
   	}
   	
   	rtRoute::connect($routes);
