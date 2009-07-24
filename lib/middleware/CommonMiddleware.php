@@ -5,9 +5,6 @@
  */
 class CommonMiddleware
 {
-    public static $ViewStylesheets = array();
-    public static $ViewJavascripts = array();
-    
 	public function process_request($request)
 	{
 		// handle Flash system should initialized before any others
