@@ -147,7 +147,7 @@
     			
     			// check mime-types
     			// Load mime types
-    			$mimes = sfYaml::load(ROOT_DIR . DS . 'config' . DS . 'mime.yml');
+    			$mimes = sfYaml::load(rtConfig::get('rt_config_dir') . DS . 'mime.yml');
     			if(isset($mimes[$format]))
     			{
     				$header = 'Content-Type: ' . $mimes[$format] . '; charset=' . rtConfig::get('encode');
