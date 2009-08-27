@@ -13,5 +13,13 @@ function link_to($text, $url, $options=array(), $absolute=false)
 // get the url link
 function url_for($url, $absolute=false)
 {
-	return rtRoute::generate($url, $absolute);
+	$url = rtRoute::generate($url);
+	
+	if($absolute)
+	{
+	    $absolute_url = rtRequest::getInstance()->getUri();
+	    $url = "{$absolute_url}{$url}";
+	}
+	
+	return $url;
 }

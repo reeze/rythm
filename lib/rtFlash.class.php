@@ -55,7 +55,7 @@ class rtFlash
 	
 	private function __construct()
 	{
-		if(!$_SESSION['_rt_flash_'])
+		if(empty($_SESSION['_rt_flash_']))
 		{
 			$_SESSION['_rt_flash_'] = array(
 					'now'  => array(), // the flash data we can get in this request
@@ -80,3 +80,4 @@ class rtFlash
         return self::$instance;
 	}
 }
+

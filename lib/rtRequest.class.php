@@ -104,6 +104,32 @@ class rtRequest
     {
     	return $this->getMethod() == self::POST;
     }
+    
+    public function getHost()
+    {
+        return $_SERVER['SERVER_NAME'];
+    }
+    
+    public function getPort()
+    {
+        return $_SERVER['SERVER_PORT'];
+    }
+    
+    public function getProtocal()
+    {
+        return $this->getPort() == '443' ? "https" : "http";
+    }
+    
+    public function getUri()
+    {
+        $uri = $this->getProtocal() . "://" . $this->getHost();
+        if($this->getPort() != '80' && $this->getPort() != '443')
+        {
+            $uri .= ':' . $this->getPort(); // other server port
+        }
+        
+        return $uri;
+    }
 
     /**
      * get request instance

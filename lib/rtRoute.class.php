@@ -90,7 +90,7 @@ class rtRoute
 	 * 
 	 * @return url
 	 */
-	public static function generate($internal_url, $absolut=false)
+	public static function generate($internal_url)
 	{
 		$old_internal_url = $internal_url; // just for exception throw
 		
@@ -147,7 +147,7 @@ class rtRoute
 				// find the named route and return the url
 				if($route[0] == $named_route)
 				{
-					return self::fill_route($route, $params, $hash, $absolut);
+					return self::fill_route($route, $params, $hash);
 				}
 				else continue;
 			}
@@ -156,7 +156,7 @@ class rtRoute
 				// trying to match the route with params
 				if(self::match($route, $params))
 				{
-					return self::fill_route($route, $params, $hash, $absolut);
+					return self::fill_route($route, $params, $hash);
 				}
 			}
 		}
@@ -174,7 +174,7 @@ class rtRoute
 	 * 
 	 * @return string the filled url
 	 */
-	public static function fill_route($route, $params, $hash, $absolute=false)
+	public static function fill_route($route, $params, $hash)
 	{
 		$rule = $route[1];
 		$default_params = isset($route[2]) ? $route[2] : array();
@@ -212,12 +212,6 @@ class rtRoute
 		$url = $query ? "$rule?" . $query : $rule;
 		
 		if($hash) $url = "$url#" . $hash;
-		
-		// aboslute url
-		if($absolute)
-		{
-			$url = "http://rt-php" . $url; // FIXME got host info here
-		}
 		
 		return $url;		
 	}
